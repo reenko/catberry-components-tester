@@ -1,9 +1,37 @@
+<style>
+    .test-case {
+        background: #eee;
+        padding: 20px;
+    }
+    .test-case__title {
+        color: #333;
+        font: 13px verdana;
+        padding-bottom: 10px;
+    }
+    .test-case__content {
+
+    }
+    .test-case__case {
+        display: inline-block;
+        vertical-align: top;
+        background: #fff;
+    }
+</style>
 {{#each cases}}
 	<div class="test-case">
-		<cat-{{../componentName}} id="js-test-case-{{../componentName}}-{{@index}}" {{#if this.store}}cat-store="{{this.store}}"{{/if}}></cat-{{../componentName}}>
+        <div class="test-case__title">{{this.description}}</div>
+        <div class="test-case__content">
+            <div class="test-case__case" style="{{this.styles}}">
+                <cat-{{../componentName}} id="js-test-case-{{../componentName}}-{{@index}}" {{#if this.store}}cat-store="{{this.store}}"{{/if}}></cat-{{../componentName}}>
+			</div>
+		</div>
 	</div>
 {{else}}
     <div class="test-case">
-        <cat-{{componentName}} id="js-test-case-{{componentName}}"></cat-{{componentName}}>
+        <div class="test-case__content">
+            <div class="test-case__case">
+				<cat-{{componentName}} id="js-test-case-{{componentName}}"></cat-{{componentName}}>
+            </div>
+        </div>
     </div>
 {{/each}}
