@@ -2,7 +2,7 @@
 
 module.exports = TestCase;
 
-var testCases = require('../../testCases.json');
+var tests = require('../../cat-component-tests.json');
 
 /*
  * This is a Catberry Cat-component file.
@@ -29,8 +29,8 @@ TestCase.prototype.render = function () {
 		.then(function (data) {
 			var componentName = data.state.componentName;
 			return {
-				cases: testCases[componentName] ?
-					testCases[componentName].cases : null,
+				cases: tests[componentName] ?
+					tests[componentName].cases : null,
 				componentName: componentName
 			}
 		});

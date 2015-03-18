@@ -22,16 +22,13 @@
         <div class="test-case__title">{{this.description}}</div>
         <div class="test-case__content">
             <div class="test-case__case" style="{{this.styles}}">
-                <cat-{{../componentName}} id="js-test-case-{{../componentName}}-{{@index}}" {{#if this.store}}cat-store="{{this.store}}"{{/if}}></cat-{{../componentName}}>
+                {{#if this.store}}
+					<cat-{{../componentName}} id="js-test-case-{{../componentName}}-{{@index}}" cat-store="{{this.store}}"></cat-{{../componentName}}>
+                {{/if}}
+                {{#if this.data}}
+					<cat-test-case-{{../componentName}} id="js-test-case-{{../componentName}}-{{@index}}" test-case-index="{{@index}}"></cat-test-case-{{../componentName}}>
+                {{/if}}
 			</div>
 		</div>
 	</div>
-{{else}}
-    <div class="test-case">
-        <div class="test-case__content">
-            <div class="test-case__case">
-				<cat-{{componentName}} id="js-test-case-{{componentName}}"></cat-{{componentName}}>
-            </div>
-        </div>
-    </div>
 {{/each}}
