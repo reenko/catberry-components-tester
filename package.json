@@ -1,0 +1,27 @@
+{
+	"name": "catberry-components-test",
+	"version": "0.1.0",
+	"description": "Engine for testing Catberry components",
+	"main": "./index.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:JuliaRechkunova/catberry-components-test.git"
+	},
+	"author": "Julia Rechkunova <julia.rechkunova@gmail.com>",
+	"dependencies": {
+		"gulp-changed": "^1.2.1",
+		"gulp-jsoncombine": "^1.0.2",
+		"map-stream": "0.0.5",
+		"vinyl-fs": "^1.0.0"
+	},
+	"devDependencies": {
+		"jscs": "~1.6.2",
+		"jshint": "^2.6.0"
+	},
+	"engines": {
+		"node": ">=0.10"
+	},
+	"scripts": {
+		"test": ".node_modules/.bin/jshint ./ && .node_modules/.bin/jscs ./"
+	}
+}

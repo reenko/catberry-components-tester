@@ -1,0 +1,9 @@
+{{#each cases}}
+	<div class="test-case">
+		<cat-{{../componentName}} id="js-test-case-{{../componentName}}-{{@index}}" {{#if this.store}}cat-store="{{this.store}}"{{/if}}></cat-{{../componentName}}>
+	</div>
+{{else}}
+    <div class="test-case">
+        <cat-{{componentName}} id="js-test-case-{{componentName}}"></cat-{{componentName}}>
+    </div>
+{{/each}}
