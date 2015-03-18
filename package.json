@@ -9,6 +9,7 @@
 	},
 	"author": "Julia Rechkunova <julia.rechkunova@gmail.com>",
 	"dependencies": {
+		"glob": "^5.0.3",
 		"gulp-changed": "^1.2.1",
 		"gulp-jsoncombine": "^1.0.2",
 		"map-stream": "0.0.5",
