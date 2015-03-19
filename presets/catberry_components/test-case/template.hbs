@@ -32,29 +32,29 @@
                 {{/if}}
 			</div>
 		</div>
-        {{#unless showInGallery}}
+        {{#unless ../isGalleryViewMode}}
             <div class="catParagraph">
                 <pre class="catBlockCode">
                     <code class="catCode">
                         {{#if this.data}}
-							<cat-test-case-{{../../componentName}}
-								id="js-test-case-{{../../componentName}}-{{@index}}"
+							<cat-test-case-{{../../../componentName}}
+								id="js-test-case-{{../../../componentName}}-{{@index}}"
                             {{#each this.attributes}}
                                 {{@key}}="{{this}}"
                             {{/each}}
-							test-case-name="{{../../componentName}}"
+							test-case-name="{{../../../componentName}}"
 							test-case-index="{{@index}}">
 
-							</cat-test-case-{{../../componentName}}>
+							</cat-test-case-{{../../../componentName}}>
                         {{else}}
-							<cat-{{../../componentName}}
-								id="js-test-case-{{../../componentName}}-{{@index}}"
+							<cat-{{../../../componentName}}
+								id="js-test-case-{{../../../componentName}}-{{@index}}"
                             {{#each this.attributes}}
                                 {{@key}}="{{this}}"
                             {{/each}}
                             {{#if this.store}}cat-store="{{this.store}}"{{/if}}>
 
-							</cat-{{../../componentName}}>
+							</cat-{{../../..componentName}}>
                         {{/if}}
                     </code>
                 </pre>

@@ -31,7 +31,8 @@ TestCase.prototype.render = function () {
 			return {
 				cases: tests[componentName] ?
 					tests[componentName].cases : null,
-				componentName: componentName
+				componentName: componentName,
+				isGalleryViewMode: data.viewMode === 'gallery'
 			};
 		});
 };
