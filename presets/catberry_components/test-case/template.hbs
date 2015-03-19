@@ -37,24 +37,22 @@
                 <pre class="catBlockCode">
                     <code class="catCode">
                         {{#if this.data}}
-							<cat-test-case-{{../../../componentName}}
+							&lt;cat-test-case-{{../../../componentName}}
 								id="js-test-case-{{../../../componentName}}-{{@index}}"
                             {{#each this.attributes}}
                                 {{@key}}="{{this}}"
                             {{/each}}
 							test-case-name="{{../../../componentName}}"
-							test-case-index="{{@index}}">
-
-							</cat-test-case-{{../../../componentName}}>
+							test-case-index="{{@index}}"&gt;
+							&lt;/cat-test-case-{{../../../componentName}}&gt;
                         {{else}}
-							<cat-{{../../../componentName}}
+							&lt;cat-{{../../../componentName}}
 								id="js-test-case-{{../../../componentName}}-{{@index}}"
                             {{#each this.attributes}}
                                 {{@key}}="{{this}}"
                             {{/each}}
-                            {{#if this.store}}cat-store="{{this.store}}"{{/if}}>
-
-							</cat-{{../../..componentName}}>
+                            {{#if this.store}}cat-store="{{this.store}}"{{/if}}&gt;
+							&lt;/cat-{{../../..componentName}}&gt;
                         {{/if}}
                     </code>
                 </pre>
