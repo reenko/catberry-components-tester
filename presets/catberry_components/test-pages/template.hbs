@@ -20,23 +20,14 @@
 		</div>
 	</section>
 {{else}}
-	<section class="catBody-leftSide">
-		<div class="catNavigation">
-			<a href="/" class="catNavigation-header">
-                {{../brand.name}}
-			</a>
+	<section class="catSections">
+		<div class="catSections-header">
+            {{../brand.name}} / {{../brand.description}}
 		</div>
-	</section>
-	<section class="catBody-rightSide">
-		<div class="catSections">
-			<div class="catSections-header">
-                {{../brand.description}}
-			</div>
-			<div class="catSections-section is-active">
-				<div class="catIndex">
-                    <a class="catIndex-button" href="/gallery">Components gallery</a>
-                    <a class="catIndex-button" href="/cases">All test cases</a>
-                </div>
+		<div class="catSections-section is-active">
+			<div class="catIndex">
+				<a class="catIndex-button" href="/gallery">Components gallery</a>
+				<a class="catIndex-button" href="/cases">All test cases</a>
 			</div>
 		</div>
 	</section>

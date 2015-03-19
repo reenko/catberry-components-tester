@@ -340,18 +340,23 @@ Styleguide 3.3
 }
 
 .catIndex {
-	width: 400px;
-	margin: 100px auto 0 auto;
+	margin-top: 100px;
+	text-align: center;
 }
 
 .catIndex-button {
 	display: inline-block;
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	text-align: center;
-	line-height: 100px;
+	line-height: 250px;
 	font-size: 24px;
 	color: #ffffff;
 	background: #2b333e;
 	border-radius: 10px;
+	margin: 25px;
+	text-decoration: none;
+}
+.catIndex-button:hover {
+	opacity: 0.8;
 }
