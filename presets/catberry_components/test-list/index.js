@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = TestCase;
+module.exports = TestList;
 
 var tests = require('../../cat-component-tests.json');
 
@@ -11,10 +11,10 @@ var tests = require('../../cat-component-tests.json');
  */
 
 /**
- * Creates new instance of "test-case" component.
+ * Creates new instance of "document" component.
  * @constructor
  */
-function TestCase() {
+function TestList() {
 
 }
 
@@ -24,14 +24,17 @@ function TestCase() {
  * @returns {Promise<Object>|Object|null|undefined} Data context
  * for template engine.
  */
-TestCase.prototype.render = function () {
+TestList.prototype.render = function () {
+	var self = this;
 	return this.$context.getStoreData()
 		.then(function (data) {
-			var componentName = data.state.componentName;
 			return {
-				cases: tests[componentName] ?
-					tests[componentName].cases : null,
-				componentName: componentName
+				components: Object.keys(tests).sort().map(function (componentName) {
+					return {
+						name: componentName,
+						isActive: componentName === data.state.componentName
+					};
+				})
 			};
 		});
 };

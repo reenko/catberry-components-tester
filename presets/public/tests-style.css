@@ -1,0 +1,340 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+/**
+Layout
+
+All layout blocks.
+
+Styleguide 1
+*/
+
+/**
+Body
+
+Main block divided into two parts.
+
+Markup: <section class="catBody catText">
+	<div class="catBody-leftSide">Left side</div>
+	<div class="catBody-rightSide">Right side</div>
+</section>
+
+Styleguide 1.1
+*/
+.catBody {
+	position: relative;
+	height: 100%;
+	background: #ffffff;
+	margin: 0;
+	padding: 0;
+}
+.catBody-leftSide,
+.catBody-rightSide {
+	height: 100%;
+	overflow: auto;
+}
+.catBody-leftSide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 250px;
+	color: #ffffff;
+	background: #2b333e;
+}
+.catBody-rightSide {
+	margin-left: 250px;
+	background: rgba(241, 244, 248, 0.5);
+}
+.catBody--testView {
+	padding: 20px;
+	background: #f1f4f8;
+}
+
+/**
+Sections
+
+Markup: <section class="catSections">
+	<div class="catSections-header">Header</div>
+	<div class="catSections-section">Section</div>
+	<div class="catSections-section is-active">Section</div>
+</section>
+
+Styleguide 1.2
+*/
+.catSections {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.catSections-header {
+	height: 70px;
+	margin-bottom: 30px;
+	padding-left: 30px;
+	color: #333c49;
+	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 70px;
+	font-weight: bold;
+	background: #f1f4f8;
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.catSections-section {
+	display: none;
+	box-sizing: border-box;
+	padding: 0 30px 30px 30px;
+}
+.catSections-section.is-active {
+	display: block;
+}
+
+/**
+Navigation
+
+Markup: <section class="catNavigation">
+	<div class="catNavigation-header">Header</div>
+	<div class="catNavigation-item">Item</div>
+	<div class="catNavigation-item is-active">Item</div>
+	<div class="catNavigation-subItem">Sub Item</div>
+	<div class="catNavigation-subItem is-active">Sub Item</div>
+</section>
+
+Styleguide 1.3
+*/
+.catNavigation {
+	margin: 0 0 30px 0;
+	padding: 0;
+	background: #2b333e;
+}
+.catNavigation-header {
+	display: block;
+	height: 70px;
+	margin-bottom: 30px;
+	padding-left: 30px;
+	color: #ffffff;
+	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 70px;
+	font-weight: bold;
+	text-decoration: none;
+	background: #333c49;
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.catNavigation-item,
+.catNavigation-subItem {
+	display: block;
+	padding: 12px 10px 12px 30px;
+	color: #b0bbca;
+	text-decoration: none;
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.catNavigation-subItem {
+	font-size: 13px;
+	padding-left: 40px;
+}
+.catNavigation-item.is-active,
+.catNavigation-subItem.is-active {
+	color: #ffffff;
+	background: #222933;
+	border-left: 3px solid #ffffff;
+}
+.catNavigation-item:active,
+.catNavigation-item:hover,
+.catNavigation-subItem:active,
+.catNavigation-subItem:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+/**
+Divider
+
+Markup: <div class="catDivider"></div>
+
+Styleguide 1.4
+*/
+.catDivider {
+	margin: 10px 0 30px 0;
+	border-bottom: 1px solid #eee;
+}
+
+/**
+Paragraph
+
+Markup: <div class="catParagraph"></div>
+
+Styleguide 1.5
+*/
+.catParagraph {
+	margin-bottom: 30px;
+}
+
+/**
+Typography
+
+Typography on site.
+
+Styleguide 2
+*/
+
+/**
+Text
+
+Markup: <div class="catText">Text example</div>
+
+Styleguide 2.1
+*/
+.catText {
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #000000;
+}
+
+/**
+Description
+
+Markup: <div class="catDescription">Description example</div>
+
+Styleguide 2.2
+*/
+.catDescription {
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #333c49;
+}
+.catDescription--right {
+	text-align: right;
+}
+
+/**
+Heading
+
+Markup: <div class="catHeading {$modifiers}">Heading example</div>
+
+catHeading--1 - H1.
+catHeading--2 - H2.
+catHeading--3 - H3.
+
+Styleguide 2.3
+*/
+.catHeading {
+	display: block;
+	font-weight: 500;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #000000;
+}
+.catHeading--1 {
+	height: 39px;
+	line-height: 40px;
+	font-size: 36px;
+}
+.catHeading--2 {
+	height: 33px;
+	line-height: 33px;
+	font-size: 30px;
+}
+.catHeading--3 {
+	height: 26px;
+	line-height: 26px;
+	font-size: 24px;
+}
+.catHeading-link,
+.catHeading-link:visited {
+	color: #333c49;
+}
+
+/**
+Heading with warning
+
+Markup: <div class="catHeading {$modifiers}">
+	Heading example
+	<sup class="catHeading-warning">warning</sup>
+</div>
+
+catHeading--1 - H1.
+catHeading--2 - H2.
+catHeading--3 - H3.
+
+Styleguide 2.4
+*/
+.catHeading-warning {
+	box-sizing: border-box;
+	vertical-align: top;
+	padding: 3px;
+	margin: 0 0 0 10px;
+	background-color: #f6f3d5;
+	color: #96904d;
+	font: 12px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-style: italic;
+	border-radius: 3px;
+}
+
+/**
+Code
+
+Show code examples.
+
+Styleguide 3
+*/
+
+/**
+Inline code
+
+Markup: <code class="catCode">Code example</code>
+
+Styleguide 3.1
+*/
+.catCode {
+	box-sizing: border-box;
+	padding: 3px;
+	margin: 0;
+	background-color: rgba(0,0,0,0.04);
+	border-radius: 3px;
+	color: #000000;
+}
+
+/**
+Block code
+
+Markup: <pre class="catBlockCode">
+	<code class="catCode">Code example</code>
+</pre>
+
+Styleguide 3.2
+*/
+.catBlockCode {
+	position: relative;
+	padding: 16px;
+	margin: 10px 0;
+	max-height: 200px;
+	background: #ebeff4;
+	box-shadow:
+		0 1px 2px 1px rgba(0, 0, 0, 0.1),
+		0 -1px 2px 1px rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	overflow: auto;
+}
+.catBlockCode .catCode {
+	background-color: transparent;
+}
+.catBlockCode-title {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	height: 10px;
+	font-weight: bold;
+	font-size: 10px;
+	background: #f1f4f8;
+}
+
+/**
+Block with test
+
+Markup: <div class="catTest"></div>
+
+Styleguide 3.3
+*/
+.catTest {
+	min-height: 10px;
+	min-width: 10px;
+	display: inline-block;
+	background: #ffffff;
+}

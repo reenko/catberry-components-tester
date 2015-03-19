@@ -23,6 +23,6 @@
 		"node": ">=0.10"
 	},
 	"scripts": {
-		"test": ".node_modules/.bin/jshint ./ && .node_modules/.bin/jscs ./"
+		"test": "./node_modules/.bin/jshint ./ && ./node_modules/.bin/jscs ./"
 	}
 }
