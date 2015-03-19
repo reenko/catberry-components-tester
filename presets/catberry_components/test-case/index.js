@@ -34,6 +34,8 @@ TestCase.prototype.render = function () {
 				cases: cases.map(function (testCase) {
 					testCase.string = testCase.string ||
 						JSON.stringify(testCase, null, '\t');
+					testCase.visible =
+						data.viewMode != 'gallery' || testCase.showInGallery;
 					return testCase;
 				}),
 				componentName: componentName,
