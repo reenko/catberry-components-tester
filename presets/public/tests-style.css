@@ -344,7 +344,7 @@ Styleguide 3.3
 }
 
 .catIndex {
-	margin-top: 200px;
+	margin-top: 100px;
 	text-align: center;
 }
 
@@ -353,8 +353,7 @@ Styleguide 3.3
 	width: 250px;
 	height: 250px;
 	text-align: center;
-	line-height: 250px;
-	font: 24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font: 16px/250px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: #ffffff;
 	background: #2b333e;
 	border-radius: 10px;

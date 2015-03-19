@@ -25,11 +25,19 @@ function TestList() {
  * for template engine.
  */
 TestList.prototype.render = function () {
-	var self = this;
 	return this.$context.getStoreData()
 		.then(function (data) {
 			return {
 				components: Object.keys(tests).sort()
+					.filter(function (componentName) {
+						if (data.viewMode === 'gallery') {
+							var cases = tests[componentName].cases || [];
+							return cases.some(function (testCase) {
+								return testCase.showInGallery;
+							});
+						}
+						return true;
+					})
 					.map(function (componentName) {
 						return {
 							name: componentName,

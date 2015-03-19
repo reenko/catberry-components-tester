@@ -1,8 +1,10 @@
-<h2 class="catHeading catHeading--2">
-    {{componentName}}
-</h2>
-<!--<div class="catDescription"></div>-->
-<div class="catDivider"></div>
+{{#if componentName}}
+	<h2 class="catHeading catHeading--2">
+        {{../componentName}}
+	</h2>
+	<!--<div class="catDescription"></div>-->
+	<div class="catDivider"></div>
+{{/if}}
 {{#each cases}}
 	<div class="catParagraph">
 		<div class="catText catParagraph">{{this.description}}</div>
@@ -30,5 +32,33 @@
                 {{/if}}
 			</div>
 		</div>
+        {{#unless showInGallery}}
+            <div class="catParagraph">
+                <pre class="catBlockCode">
+                    <code class="catCode">
+                        {{#if this.data}}
+							<cat-test-case-{{../../componentName}}
+								id="js-test-case-{{../../componentName}}-{{@index}}"
+                            {{#each this.attributes}}
+                                {{@key}}="{{this}}"
+                            {{/each}}
+							test-case-name="{{../../componentName}}"
+							test-case-index="{{@index}}">
+
+							</cat-test-case-{{../../componentName}}>
+                        {{else}}
+							<cat-{{../../componentName}}
+								id="js-test-case-{{../../componentName}}-{{@index}}"
+                            {{#each this.attributes}}
+                                {{@key}}="{{this}}"
+                            {{/each}}
+                            {{#if this.store}}cat-store="{{this.store}}"{{/if}}>
+
+							</cat-{{../../componentName}}>
+                        {{/if}}
+                    </code>
+                </pre>
+            </div>
+        {{/unless}}
 	</div>
 {{/each}}
