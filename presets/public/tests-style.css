@@ -338,3 +338,20 @@ Styleguide 3.3
 	display: inline-block;
 	background: #ffffff;
 }
+
+.catIndex {
+	width: 400px;
+	margin: 100px auto 0 auto;
+}
+
+.catIndex-button {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	font-size: 24px;
+	color: #ffffff;
+	background: #2b333e;
+	border-radius: 10px;
+}

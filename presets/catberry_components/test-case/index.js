@@ -27,7 +27,7 @@ function TestCase() {
 TestCase.prototype.render = function () {
 	return this.$context.getStoreData()
 		.then(function (data) {
-			var componentName = data.state.componentName;
+			var componentName = data.componentName;
 			return {
 				cases: tests[componentName] ?
 					tests[componentName].cases : null,

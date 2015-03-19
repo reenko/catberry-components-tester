@@ -1,8 +1,9 @@
 'use strict';
 
-module.exports = TestList;
+module.exports = TestPages;
 
-var tests = require('../../cat-component-tests.json');
+var packageConfig = require('../../package.json'),
+	tests = require('../../cat-component-tests.json');
 
 /*
  * This is a Catberry Cat-component file.
@@ -11,10 +12,10 @@ var tests = require('../../cat-component-tests.json');
  */
 
 /**
- * Creates new instance of "document" component.
+ * Creates new instance of "test-case" component.
  * @constructor
  */
-function TestList() {
+function TestPages() {
 
 }
 
@@ -24,19 +25,16 @@ function TestList() {
  * @returns {Promise<Object>|Object|null|undefined} Data context
  * for template engine.
  */
-TestList.prototype.render = function () {
-	var self = this;
+TestPages.prototype.render = function () {
 	return this.$context.getStoreData()
 		.then(function (data) {
 			return {
-				components: Object.keys(tests).sort()
-					.map(function (componentName) {
-						return {
-							name: componentName,
-							isActive: componentName === data.componentName
-						};
-					}),
-				viewMode: data.viewMode
+				showComponents:
+					data.activePages.gallery || data.activePages.cases,
+				brand: {
+					name: packageConfig.name,
+					description: packageConfig.description
+				}
 			};
 		});
 };

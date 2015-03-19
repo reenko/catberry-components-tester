@@ -1,0 +1,43 @@
+{{#if showComponents}}
+	<section class="catBody-leftSide">
+		<div class="catNavigation">
+			<a href="/" class="catNavigation-header">
+                {{../brand.name}}
+			</a>
+			<cat-test-list id="js-cat-test-list"
+						   cat-store="test_stores/TestCase"></cat-test-list>
+		</div>
+	</section>
+	<section class="catBody-rightSide">
+		<div class="catSections">
+			<div class="catSections-header">
+                {{../brand.description}}
+			</div>
+			<div class="catSections-section is-active">
+				<cat-test-case id="js-cat-test-case"
+							   cat-store="test_stores/TestCase"></cat-test-case>
+			</div>
+		</div>
+	</section>
+{{else}}
+	<section class="catBody-leftSide">
+		<div class="catNavigation">
+			<a href="/" class="catNavigation-header">
+                {{../brand.name}}
+			</a>
+		</div>
+	</section>
+	<section class="catBody-rightSide">
+		<div class="catSections">
+			<div class="catSections-header">
+                {{../brand.description}}
+			</div>
+			<div class="catSections-section is-active">
+				<div class="catIndex">
+                    <a class="catIndex-button" href="/gallery">Components gallery</a>
+                    <a class="catIndex-button" href="/cases">All test cases</a>
+                </div>
+			</div>
+		</div>
+	</section>
+{{/if}}
