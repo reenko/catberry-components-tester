@@ -354,7 +354,7 @@ Styleguide 3.3
 	height: 250px;
 	text-align: center;
 	line-height: 250px;
-	font-size: 24px;
+	font: 24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: #ffffff;
 	background: #2b333e;
 	border-radius: 10px;
