@@ -27,10 +27,15 @@ function TestCase() {
 TestCase.prototype.render = function () {
 	return this.$context.getStoreData()
 		.then(function (data) {
-			var componentName = data.componentName;
+			var componentName = data.componentName,
+				cases = (tests[componentName] ?
+					tests[componentName].cases : null) || [];
 			return {
-				cases: tests[componentName] ?
-					tests[componentName].cases : null,
+				cases: cases.map(function (testCase) {
+					testCase.string = testCase.string ||
+						JSON.stringify(testCase, null, '\t');
+					return testCase;
+				}),
 				componentName: componentName,
 				isGalleryViewMode: data.viewMode === 'gallery'
 			};
