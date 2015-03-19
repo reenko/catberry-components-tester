@@ -1,4 +1,4 @@
 {{#each components}}
 	<a class="catNavigation-item {{#if this.isActive}}is-active{{/if}}"
-	   href="/components/{{this.name}}">{{this.name}}</a>
+	   href="/{{../viewMode}}/{{this.name}}">{{this.name}}</a>
 {{/each}}

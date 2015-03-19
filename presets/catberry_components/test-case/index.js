@@ -27,11 +27,19 @@ function TestCase() {
 TestCase.prototype.render = function () {
 	return this.$context.getStoreData()
 		.then(function (data) {
-			var componentName = data.state.componentName;
+			var componentName = data.componentName,
+				cases = (tests[componentName] ?
+					tests[componentName].cases : null) || [];
 			return {
-				cases: tests[componentName] ?
-					tests[componentName].cases : null,
-				componentName: componentName
+				cases: cases.map(function (testCase) {
+					testCase.string = testCase.string ||
+						JSON.stringify(testCase, null, '\t');
+					testCase.visible =
+						data.viewMode != 'gallery' || testCase.showInGallery;
+					return testCase;
+				}),
+				componentName: componentName,
+				isGalleryViewMode: data.viewMode === 'gallery'
 			};
 		});
 };
