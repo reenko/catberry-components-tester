@@ -11,5 +11,6 @@
 
 module.exports = [
 	'/',
+	'/components/',
 	'/components/:componentName[test_stores/TestCase]'
 ];
