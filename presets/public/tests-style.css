@@ -121,6 +121,10 @@ Styleguide 1.3
 	background: #333c49;
 	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
+.catNavigation--light,
+.catNavigation--light .catNavigation-header {
+	margin: 0;
+}
 .catNavigation-item,
 .catNavigation-subItem {
 	display: block;
@@ -340,7 +344,7 @@ Styleguide 3.3
 }
 
 .catIndex {
-	margin-top: 100px;
+	margin-top: 200px;
 	text-align: center;
 }
 
@@ -356,7 +360,8 @@ Styleguide 3.3
 	border-radius: 10px;
 	margin: 25px;
 	text-decoration: none;
+	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .catIndex-button:hover {
-	opacity: 0.8;
+	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.15);
 }
