@@ -10,5 +10,6 @@
 // https://github.com/catberry/catberry/blob/master/docs/index.md#routing
 
 module.exports = [
+	'/',
 	'/components/:componentName[test_stores/TestCase]'
 ];
