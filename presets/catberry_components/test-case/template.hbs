@@ -34,8 +34,32 @@
 		</div>
         {{#unless ../isGalleryViewMode}}
             <div class="catParagraph">
-                <pre class="catBlockCode"><code class="catCode">{{this.string}}<cat-loader id="4234"></cat-loader></code></pre>
+                <pre class="catBlockCode"><code class="catCode">{{this.string}}</code></pre>
             </div>
+			<div class="catParagraph">
+				<pre class="catBlockCode">
+                    {{~#if this.data~}}
+						&lt;cat-test-case-{{../../componentName}}
+							id="js-test-case-{{../../componentName}}-{{@index}}"
+                        {{#each this.attributes}}
+                            {{@key}}="{{this}}"
+                        {{/each}}
+						test-case-name="{{../../componentName}}"
+					test-case-index="{{@index}}"&gt;
+
+						&lt;/cat-test-case-{{../../componentName}}&gt;
+                    {{~else~}}
+						<cat-{{../../componentName}}
+							id="js-test-case-{{../../componentName}}-{{@index}}"
+                        {{#each this.attributes}}
+                            {{@key}}="{{this}}"
+                        {{/each}}
+                        {{#if this.store}}cat-store="{{this.store}}"{{/if}}&gt;
+
+						&lt;/cat-{{../../componentName}}&gt;
+                    {{~/if~}}
+                </pre>
+			</div>
         {{/unless}}
 	</div>
 {{/each}}
