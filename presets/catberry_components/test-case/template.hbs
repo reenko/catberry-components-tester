@@ -2,11 +2,10 @@
 	<h2 class="catHeading catHeading--2">
         {{../componentName}}
 	</h2>
-	<!--<div class="catDescription"></div>-->
-	<div class="catDivider"></div>
 {{/if}}
 {{#each cases}}
 	{{#if this.visible}}
+		<div class="catDivider"></div>
 		<div class="catParagraph">
 			<div class="catHeading catHeading--3 catParagraph">{{this.description}}</div>
 			<div class="catParagraph">
@@ -35,10 +34,10 @@
 			</div>
             {{#unless ../../isGalleryViewMode}}
 				<div class="catParagraph">
-					<pre class="catBlockCode"><code class="catCode">&lt;cat-{{../../../componentName}} id="js-cat-{{../../../componentName}}"{{#each this.attributes}} {{@key}}="{{this}}"{{/each}}{{#if this.store}} cat-store="{{this.store}}"{{/if}}&gt;&lt;/cat-{{../../../componentName}}&gt;</code><span class="catBlockCode-title">markup</span></pre>
+					<pre class="catBlockCode"><code class="catCode html">&lt;cat-{{../../../componentName}} id="js-cat-{{../../../componentName}}"{{#each this.attributes}} {{@key}}="{{this}}"{{/each}}{{#if this.store}} cat-store="{{this.store}}"{{/if}}&gt;&lt;/cat-{{../../../componentName}}&gt;</code><span class="catBlockCode-title">markup</span></pre>
 				</div>
 				<div class="catParagraph">
-					<pre class="catBlockCode"><code class="catCode">{{this.string}}</code><span class="catBlockCode-title">test case</span></pre>
+					<pre class="catBlockCode"><code class="catCode json">{{this.string}}</code><span class="catBlockCode-title">test case</span></pre>
 				</div>
             {{/unless}}
 		</div>
