@@ -51,9 +51,8 @@ TestCase.prototype.render = function () {
  */
 TestCase.prototype.bind = function () {
 	var window = this.$context.locator.resolve('window'),
-		highlights = this.$context.element.querySelectorAll('js-highlight');
+		highlights = this.$context.element.querySelectorAll('.js-highlight');
 	for (var i = 0; i < highlights.length; i++) {
 		window.hljs.highlightBlock(highlights[i]);
-		console.log(highlights[i]);
 	}
 };
