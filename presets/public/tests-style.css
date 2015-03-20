@@ -372,16 +372,14 @@ Styleguide 3.3
 
 .catTabs-item {
 	display: inline-block;
-	padding: 4px 10px;
+	padding: 2px;
 	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #ffffff;
-	background: #2b333e;
-	border-radius: 10px;
+	color: #2b333e;
+	border-bottom: 2px solid transparent;
 	margin-right: 10px;
 	text-decoration: none;
-	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.catTabs-item.is-active,
-.catTabs-item:hover {
-	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.3);
+a.catTabs-item.is-active,
+a.catTabs-item:hover {
+	border-bottom-color: #2b333e;
 }

@@ -4,6 +4,7 @@
 	</h2>
 {{/if}}
 <div class="catParagraph catTabs">
+    <span class="catTabs-item">Cases: </span>
     {{#each cases}}
 		<a class="catTabs-item {{#if this.isActive}}is-active{{/if}}" href="/{{../viewMode}}/{{../componentName}}/{{this.name}}">{{this.name}}</a>
     {{/each}}

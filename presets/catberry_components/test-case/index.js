@@ -34,7 +34,8 @@ TestCase.prototype.render = function () {
 			return {
 				cases: Object.keys(cases).sort()
 					.filter(function (testCaseName) {
-						return data.viewMode != 'gallery' || cases[testCaseName].showInGallery;
+						return data.viewMode != 'gallery' ||
+							cases[testCaseName].showInGallery;
 					})
 					.map(function (testCaseName) {
 						var testCase = cases[testCaseName];
