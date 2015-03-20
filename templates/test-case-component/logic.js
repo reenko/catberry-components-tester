@@ -29,12 +29,21 @@ function TestCaseComponent () {
  * for template engine.
  */
 TestCaseComponent.prototype.render = function () {
-	var index = this.$context.attributes['test-case-index'],
-		componentName = this.$context.attributes['test-case-name'];
+	var testCaseName = this.$context.attributes['test-case-name'],
+		componentName = this.$context.attributes['test-case-component'],
+		currentTestCase = {};
 
 	if (!tests[componentName] || !tests[componentName].cases) {
 		return {};
 	}
 
-	return tests[componentName].cases[index].data;
+	tests[componentName].cases.every(function (testCase) {
+		if (testCaseName === testCase.name) {
+			currentTestCase = testCase;
+			return false;
+		}
+		return true;
+	});
+
+	return currentTestCase.data || {};
 };

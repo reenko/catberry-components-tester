@@ -1,4 +1,10 @@
 {{#each components}}
 	<a class="catNavigation-item {{#if this.isActive}}is-active{{/if}}"
 	   href="/{{../viewMode}}/{{this.name}}">{{this.name}}</a>
+    {{#each this.cases}}
+        {{#if this.visible}}
+			<a class="catNavigation-item {{#if this.isActive}}is-active{{/if}}"
+			   href="/{{../viewMode}}/{{../this.name}}/{{../this.name}}">{{this.name}}</a>
+        {{/if}}
+    {{/each}}
 {{/each}}

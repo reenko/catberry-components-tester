@@ -12,5 +12,6 @@
 module.exports = [
 	'/',
 	'/:viewMode[test_stores/TestPages]/',
-	'/:viewMode[test_stores/TestPages]/:componentName[test_stores/TestCase]'
+	'/:viewMode[test_stores/TestPages]/:componentName[test_stores/TestCase]',
+	'/:viewMode[test_stores/TestPages]/:componentName[test_stores/TestCase]/:testCaseName[test_stores/TestCase]'
 ];

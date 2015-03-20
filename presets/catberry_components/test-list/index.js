@@ -41,7 +41,14 @@ TestList.prototype.render = function () {
 					.map(function (componentName) {
 						return {
 							name: componentName,
-							isActive: componentName === data.componentName
+							isActive: componentName === data.componentName,
+							cases: (tests[componentName].cases || [])
+								.map(function (testCase) {
+									testCase.visible =
+										data.viewMode != 'gallery' || testCase.showInGallery;
+									testCase.isActive = (testCase.name === data.testCaseName);
+									return testCase;
+								})
 						};
 					}),
 				viewMode: data.viewMode

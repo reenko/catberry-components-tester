@@ -22,11 +22,13 @@ function TestCase($serviceLocator) {
  * @returns {Promise<Object>|Object|null|undefined} Loaded data.
  */
 TestCase.prototype.load = function () {
-	var componentName = this.$context.state.componentName;
+	var componentName = this.$context.state.componentName,
+		testCaseName = this.$context.state.testCaseName;
 	return this.$context.getStoreData('test_stores/TestPages')
 		.then(function (data) {
 			return {
 				componentName: componentName,
+				testCaseName: testCaseName,
 				viewMode: data.activePages.main ? 'cases' : data.page
 			};
 		});

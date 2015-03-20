@@ -30,18 +30,18 @@ TestCase.prototype.render = function () {
 			var componentName = data.componentName,
 				cases = (tests[componentName] ?
 					tests[componentName].cases : null) || [],
-				number = 0;
+				currentTestCase = {};
+
+			cases.every(function (testCase) {
+				if (data.testCaseName === testCase.name) {
+					currentTestCase = testCase;
+					return false;
+				}
+				return true;
+			});
+
 			return {
-				cases: cases.map(function (testCase) {
-					testCase.string = testCase.string ||
-						JSON.stringify(testCase, null, '\t');
-					testCase.visible =
-						data.viewMode != 'gallery' || testCase.showInGallery;
-					if (testCase.visible) {
-						testCase.number = number++ + 1;
-					}
-					return testCase;
-				}),
+				currentCase: currentTestCase,
 				componentName: componentName,
 				isGalleryViewMode: data.viewMode === 'gallery'
 			};
