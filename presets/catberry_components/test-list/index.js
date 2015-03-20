@@ -42,18 +42,7 @@ TestList.prototype.render = function () {
 						var cases = tests[componentName].cases || {};
 						return {
 							componentName: componentName,
-							isActive: componentName === data.componentName,
-							cases: Object.keys(cases)
-								.map(function (testCaseName) {
-									var testCase = cases[testCaseName];
-									return {
-										visible: data.viewMode != 'gallery' ||
-											testCase.showInGallery,
-										isActive:
-											testCaseName  === data.testCaseName,
-										name: testCaseName
-									};
-								})
+							isActive: componentName === data.componentName
 						};
 					}),
 				viewMode: data.viewMode

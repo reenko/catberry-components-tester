@@ -32,9 +32,20 @@ TestCase.prototype.render = function () {
 					tests[componentName].cases : {}) || {};
 
 			return {
+				cases: Object.keys(cases).sort()
+					.filter(function (testCaseName) {
+						return data.viewMode != 'gallery' || cases[testCaseName].showInGallery;
+					})
+					.map(function (testCaseName) {
+						var testCase = cases[testCaseName];
+						testCase.name = testCaseName;
+						testCase.isActive = data.testCaseName === testCaseName;
+						return testCase;
+					}),
 				currentCase: cases[data.testCaseName] || {},
 				componentName: componentName,
-				isGalleryViewMode: data.viewMode === 'gallery'
+				isGalleryViewMode: data.viewMode === 'gallery',
+				viewMode: data.viewMode
 			};
 		});
 };

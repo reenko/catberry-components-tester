@@ -363,5 +363,25 @@ Styleguide 3.3
 	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .catIndex-button:hover {
-	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.catTabs {
+	margin: 10px 0;
+}
+
+.catTabs-item {
+	display: inline-block;
+	padding: 4px 10px;
+	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #ffffff;
+	background: #2b333e;
+	border-radius: 10px;
+	margin-right: 10px;
+	text-decoration: none;
+	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.catTabs-item.is-active,
+.catTabs-item:hover {
+	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.3);
 }
