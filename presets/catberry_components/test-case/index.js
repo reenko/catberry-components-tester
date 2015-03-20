@@ -29,13 +29,17 @@ TestCase.prototype.render = function () {
 		.then(function (data) {
 			var componentName = data.componentName,
 				cases = (tests[componentName] ?
-					tests[componentName].cases : null) || [];
+					tests[componentName].cases : null) || [],
+				number = 0;
 			return {
 				cases: cases.map(function (testCase) {
 					testCase.string = testCase.string ||
 						JSON.stringify(testCase, null, '\t');
 					testCase.visible =
 						data.viewMode != 'gallery' || testCase.showInGallery;
+					if (testCase.visible) {
+						testCase.number = number++ + 1;
+					}
 					return testCase;
 				}),
 				componentName: componentName,
