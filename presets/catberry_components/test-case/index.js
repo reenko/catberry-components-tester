@@ -29,21 +29,31 @@ TestCase.prototype.render = function () {
 		.then(function (data) {
 			var componentName = data.componentName,
 				cases = (tests[componentName] ?
-					tests[componentName].cases : null) || [],
-				number = 0;
+						tests[componentName].cases : {}) || {},
+				currentCase = cases[data.testCaseName] || null;
+
+			if (currentCase) {
+				currentCase.string = currentCase.string ||
+					JSON.stringify(currentCase, null, '\t');
+			}
+
 			return {
-				cases: cases.map(function (testCase) {
-					testCase.string = testCase.string ||
-						JSON.stringify(testCase, null, '\t');
-					testCase.visible =
-						data.viewMode != 'gallery' || testCase.showInGallery;
-					if (testCase.visible) {
-						testCase.number = number++ + 1;
-					}
-					return testCase;
-				}),
+				cases: Object.keys(cases)
+					.filter(function (testCaseName) {
+						return data.viewMode != 'gallery' ||
+							cases[testCaseName].showInGallery;
+					})
+					.map(function (testCaseName) {
+						var testCase = {};
+						testCase.testCaseName = testCaseName;
+						testCase.isActive = data.testCaseName === testCaseName;
+						return testCase;
+					}),
+				testCaseName: data.testCaseName,
+				currentCase: currentCase,
 				componentName: componentName,
-				isGalleryViewMode: data.viewMode === 'gallery'
+				isGalleryViewMode: data.viewMode === 'gallery',
+				viewMode: data.viewMode
 			};
 		});
 };

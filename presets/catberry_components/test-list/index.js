@@ -27,21 +27,36 @@ function TestList() {
 TestList.prototype.render = function () {
 	return this.$context.getStoreData()
 		.then(function (data) {
+			var firstVisibleCaseByComponent = {};
 			return {
 				components: Object.keys(tests).sort()
 					.filter(function (componentName) {
+						var cases = tests[componentName].cases || {},
+							casesNames = Object.keys(cases);
+
 						if (data.viewMode === 'gallery') {
-							var cases = tests[componentName].cases || [];
-							return cases.some(function (testCase) {
-								return testCase.showInGallery;
+							return casesNames.some(function (testCaseName) {
+								if (cases[testCaseName].showInGallery) {
+									firstVisibleCaseByComponent[componentName] =
+										testCaseName;
+								}
+								return cases[testCaseName].showInGallery;
 							});
 						}
+
+						if (casesNames.length > 0) {
+							firstVisibleCaseByComponent[componentName] =
+								casesNames[0];
+						}
+
 						return true;
 					})
 					.map(function (componentName) {
 						return {
-							name: componentName,
-							isActive: componentName === data.componentName
+							componentName: componentName,
+							isActive: componentName === data.componentName,
+							firstTestCaseName:
+								firstVisibleCaseByComponent[componentName]
 						};
 					}),
 				viewMode: data.viewMode

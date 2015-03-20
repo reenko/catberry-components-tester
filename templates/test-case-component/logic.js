@@ -29,12 +29,12 @@ function TestCaseComponent () {
  * for template engine.
  */
 TestCaseComponent.prototype.render = function () {
-	var index = this.$context.attributes['test-case-index'],
-		componentName = this.$context.attributes['test-case-name'];
+	var testCaseName = this.$context.attributes['test-case-name'],
+		componentName = this.$context.attributes['test-case-component'];
 
-	if (!tests[componentName] || !tests[componentName].cases) {
+	try {
+		return tests[componentName].cases[testCaseName].data;
+	} catch (error) {
 		return {};
 	}
-
-	return tests[componentName].cases[index].data;
 };
