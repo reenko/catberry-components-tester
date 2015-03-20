@@ -29,7 +29,13 @@ TestCase.prototype.render = function () {
 		.then(function (data) {
 			var componentName = data.componentName,
 				cases = (tests[componentName] ?
-					tests[componentName].cases : {}) || {};
+						tests[componentName].cases : {}) || {},
+				currentCase = cases[data.testCaseName] || null;
+
+			if (currentCase) {
+				currentCase.string = currentCase.string ||
+					JSON.stringify(currentCase, null, '\t');
+			}
 
 			return {
 				cases: Object.keys(cases).sort()
@@ -38,12 +44,12 @@ TestCase.prototype.render = function () {
 							cases[testCaseName].showInGallery;
 					})
 					.map(function (testCaseName) {
-						var testCase = cases[testCaseName];
-						testCase.name = testCaseName;
+						var testCase = {};
+						testCase.testCaseName = testCaseName;
 						testCase.isActive = data.testCaseName === testCaseName;
 						return testCase;
 					}),
-				currentCase: cases[data.testCaseName] || {},
+				currentCase: currentCase,
 				componentName: componentName,
 				isGalleryViewMode: data.viewMode === 'gallery',
 				viewMode: data.viewMode

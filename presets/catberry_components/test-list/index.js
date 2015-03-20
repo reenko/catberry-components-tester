@@ -39,7 +39,6 @@ TestList.prototype.render = function () {
 						return true;
 					})
 					.map(function (componentName) {
-						var cases = tests[componentName].cases || {};
 						return {
 							componentName: componentName,
 							isActive: componentName === data.componentName
