@@ -43,3 +43,17 @@ TestCase.prototype.render = function () {
 			};
 		});
 };
+
+/**
+ * Returns event binding settings for the component.
+ * This method is optional.
+ * @returns {Promise<Object>|Object|null|undefined} Binding settings.
+ */
+TestCase.prototype.bind = function () {
+	var window = this.$context.locator.resolve('window'),
+		highlights = this.$context.element.querySelectorAll('js-highlight');
+	for (var i = 0; i < highlights.length; i++) {
+		window.hljs.highlightBlock(highlights[i]);
+		console.log(highlights[i]);
+	}
+};
