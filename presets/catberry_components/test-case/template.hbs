@@ -17,7 +17,7 @@
 			<div class="catTest" style="{{../currentCase.styles}}">
                 {{#if ../currentCase.data}}
 					<cat-test-case-{{../componentName}}
-						id="js-test-case-{{../componentName}}"
+						id="js-test-case-{{../componentName}}-{{../testCaseName}}"
                     {{#each ../currentCase.attributes}}
                         {{@key}}="{{this}}"
                     {{/each}}
@@ -27,7 +27,7 @@
 					</cat-test-case-{{../componentName}}>
                 {{else}}
 					<cat-{{../componentName}}
-						id="js-test-case-{{../componentName}}"
+						id="js-test-case-{{../componentName}}-{{../testCaseName}}"
                     {{#each ../currentCase.attributes}}
                         {{@key}}="{{this}}"
                     {{/each}}
