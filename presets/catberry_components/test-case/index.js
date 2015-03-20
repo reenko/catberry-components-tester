@@ -49,6 +49,7 @@ TestCase.prototype.render = function () {
 						testCase.isActive = data.testCaseName === testCaseName;
 						return testCase;
 					}),
+				testCaseName: data.testCaseName,
 				currentCase: currentCase,
 				componentName: componentName,
 				isGalleryViewMode: data.viewMode === 'gallery',

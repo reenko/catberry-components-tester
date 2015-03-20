@@ -2,14 +2,14 @@
 	<h2 class="catHeading catHeading--2">
         {{../componentName}}
 	</h2>
+	<div class="catParagraph catTabs">
+		<span class="catTabs-item">Cases: </span>
+        {{#each ../cases}}
+			<a class="catTabs-item {{#if this.isActive}}is-active{{/if}}" href="/{{../../viewMode}}/{{../../componentName}}/{{this.testCaseName}}">{{this.testCaseName}}</a>
+        {{/each}}
+	</div>
+	<div class="catDivider"></div>
 {{/if}}
-<div class="catParagraph catTabs">
-	<span class="catTabs-item">Cases: </span>
-    {{#each cases}}
-		<a class="catTabs-item {{#if this.isActive}}is-active{{/if}}" href="/{{../viewMode}}/{{../componentName}}/{{this.testCaseName}}">{{this.testCaseName}}</a>
-    {{/each}}
-</div>
-<div class="catDivider"></div>
 {{#if currentCase}}
 	<div class="catParagraph">
 		<div class="catHeading catHeading--3 catParagraph">{{../currentCase.description}}</div>
@@ -21,7 +21,7 @@
                     {{#each ../currentCase.attributes}}
                         {{@key}}="{{this}}"
                     {{/each}}
-					test-case-name="{{../currentCase.name}}"
+					test-case-name="{{../testCaseName}}"
 					test-case-component="{{../componentName}}">
 
 					</cat-test-case-{{../componentName}}>
