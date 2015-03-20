@@ -31,23 +31,28 @@ TestList.prototype.render = function () {
 				components: Object.keys(tests).sort()
 					.filter(function (componentName) {
 						if (data.viewMode === 'gallery') {
-							var cases = tests[componentName].cases || [];
-							return cases.some(function (testCase) {
-								return testCase.showInGallery;
+							var cases = tests[componentName].cases || {};
+							return Object.keys(cases).some(function (testCaseName) {
+								return cases[testCaseName].showInGallery;
 							});
 						}
 						return true;
 					})
 					.map(function (componentName) {
+						var cases = tests[componentName].cases || {};
 						return {
-							name: componentName,
+							componentName: componentName,
 							isActive: componentName === data.componentName,
-							cases: (tests[componentName].cases || [])
-								.map(function (testCase) {
-									testCase.visible =
-										data.viewMode != 'gallery' || testCase.showInGallery;
-									testCase.isActive = (testCase.name === data.testCaseName);
-									return testCase;
+							cases: Object.keys(cases)
+								.map(function (testCaseName) {
+									var testCase = cases[testCaseName];
+									return {
+										visible: data.viewMode != 'gallery' ||
+											testCase.showInGallery,
+										isActive:
+											testCaseName  === data.testCaseName,
+										name: testCaseName
+									};
 								})
 						};
 					}),

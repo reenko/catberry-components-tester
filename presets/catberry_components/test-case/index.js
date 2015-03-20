@@ -29,19 +29,10 @@ TestCase.prototype.render = function () {
 		.then(function (data) {
 			var componentName = data.componentName,
 				cases = (tests[componentName] ?
-					tests[componentName].cases : null) || [],
-				currentTestCase = {};
-
-			cases.every(function (testCase) {
-				if (data.testCaseName === testCase.name) {
-					currentTestCase = testCase;
-					return false;
-				}
-				return true;
-			});
+					tests[componentName].cases : {}) || {};
 
 			return {
-				currentCase: currentTestCase,
+				currentCase: cases[data.testCaseName] || {},
 				componentName: componentName,
 				isGalleryViewMode: data.viewMode === 'gallery'
 			};

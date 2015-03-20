@@ -30,20 +30,11 @@ function TestCaseComponent () {
  */
 TestCaseComponent.prototype.render = function () {
 	var testCaseName = this.$context.attributes['test-case-name'],
-		componentName = this.$context.attributes['test-case-component'],
-		currentTestCase = {};
+		componentName = this.$context.attributes['test-case-component'];
 
 	if (!tests[componentName] || !tests[componentName].cases) {
 		return {};
 	}
 
-	tests[componentName].cases.every(function (testCase) {
-		if (testCaseName === testCase.name) {
-			currentTestCase = testCase;
-			return false;
-		}
-		return true;
-	});
-
-	return currentTestCase.data || {};
+	return tests[componentName].cases[testCaseName] || {};
 };
