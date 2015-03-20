@@ -124,7 +124,7 @@ Styleguide 1.3
 .catNavigation--light,
 .catNavigation--light .catNavigation-header {
 	margin: 0;
-	padding: 0;
+	padding-bottom: 0;
 }
 .catNavigation-item,
 .catNavigation-subItem {
