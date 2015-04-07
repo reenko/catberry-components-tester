@@ -60,10 +60,10 @@ TestCase.prototype.render = function () {
  * @returns {Promise<Object>|Object|null|undefined} Binding settings.
  */
 TestCase.prototype.bind = function () {
-	var window = this.$context.locator.resolve('window'),
+	var browserWindow = this.$context.locator.resolve('window'),
 		highlights = this.$context.element.querySelectorAll('.js-highlight');
 	for (var i = 0; i < highlights.length; i++) {
-		window.hljs.highlightBlock(highlights[i]);
+		browserWindow.hljs.highlightBlock(highlights[i]);
 	}
 
 	return {
@@ -109,9 +109,15 @@ TestCase.prototype._handleShowCookie = function (event) {
  * @private
  */
 TestCase.prototype._handleShowHtml = function (event) {
-	var blockSelector = '.js-component-html';
-	this.$context.element.querySelector(blockSelector + ' pre')
-		.innerText = this.$context.element.innerHTML;
+	var blockSelector = '.js-component-html',
+		block = this.$context.element.querySelector(blockSelector + ' code'),
+		browserWindow = this.$context.locator.resolve('window');
+
+	block.innerText = this.$context.element
+		.querySelector('.js-component-test').innerHTML;
+
+	browserWindow.hljs.highlightBlock(block);
+
 	this._toggleBlock(event, blockSelector);
 };
 
