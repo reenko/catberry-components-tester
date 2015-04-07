@@ -114,7 +114,7 @@ TestCase.prototype._handleShowHtml = function (event) {
 		browserWindow = this.$context.locator.resolve('window');
 
 	block.innerText = this.$context.element
-		.querySelector('.js-component-test').innerHTML;
+		.querySelector('.js-component-test').innerHTML.trim();
 
 	browserWindow.hljs.highlightBlock(block);
 
