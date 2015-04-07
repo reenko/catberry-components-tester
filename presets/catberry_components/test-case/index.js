@@ -100,9 +100,12 @@ TestCase.prototype._handleShowCase = function (event) {
  */
 TestCase.prototype._handleShowCookie = function (event) {
 	var blockSelector = '.js-component-cookie',
-		block = this.$context.element.querySelector(blockSelector + ' code');
+		block = this.$context.element.querySelector(blockSelector + ' code'),
+		browserWindow = this.$context.locator.resolve('window');
 
 	block.innerText = JSON.stringify(this.$context.cookie.getAll(), null, '\t');
+
+	browserWindow.hljs.highlightBlock(block);
 
 	this._toggleBlock(event, blockSelector);
 };
