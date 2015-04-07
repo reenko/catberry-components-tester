@@ -40,13 +40,17 @@
 		<div class="catDivider"></div>
 		<div class="catParagraph">
 			<a href="#" class="catButton js-show-component-markup">Show markup</a>
-			<a href="#" class="catButton js-show-component-case">Show case options</a>
+			<a href="#" class="catButton js-show-component-case">Show options of case</a>
+			<a href="#" class="catButton js-show-component-cookie">Show current cookie</a>
 		</div>
 		<div class="catParagraph js-component-markup" style="display: none;">
 			<pre class="catBlockCode"><code class="catCode js-highlight html">&lt;cat-{{../componentName}} id="js-cat-{{../componentName}}"{{#each ../currentCase.attributes}} {{@key}}="{{this}}"{{/each}}{{#if ../currentCase.store}} cat-store="{{../currentCase.store}}"{{/if}}&gt;&lt;/cat-{{../componentName}}&gt;</code><span class="catBlockCode-title">markup</span></pre>
 		</div>
 		<div class="catParagraph js-component-case" style="display: none">
 			<pre class="catBlockCode"><code class="catCode js-highlight json">{{../currentCase.string}}</code><span class="catBlockCode-title">case</span></pre>
+		</div>
+		<div class="catParagraph js-component-cookie" style="display: none">
+			<pre class="catBlockCode"><code class="catCode js-highlight json">{{../cookie}}</code><span class="catBlockCode-title">cookie</span></pre>
 		</div>
 	</div>
 {{/if}}

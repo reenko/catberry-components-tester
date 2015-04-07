@@ -25,6 +25,7 @@ function TestCase() {
  * for template engine.
  */
 TestCase.prototype.render = function () {
+	var self = this;
 	return this.$context.getStoreData()
 		.then(function (data) {
 			var componentName = data.componentName,
@@ -47,7 +48,8 @@ TestCase.prototype.render = function () {
 					}),
 				testCaseName: data.testCaseName,
 				currentCase: currentCase,
-				componentName: componentName
+				componentName: componentName,
+				cookie: JSON.stringify(self.$context.cookie.getAll(), null, '\t')
 			};
 		});
 };
@@ -67,6 +69,7 @@ TestCase.prototype.bind = function () {
 	return {
 		click: {
 			'.js-show-component-markup': this._handleShowMarkup,
+			'.js-show-component-cookie': this._handleShowCookie,
 			'.js-show-component-case': this._handleShowCase
 		}
 	};
@@ -88,6 +91,15 @@ TestCase.prototype._handleShowMarkup = function (event) {
  */
 TestCase.prototype._handleShowCase = function (event) {
 	this._toggleBlock(event, '.js-component-case');
+};
+
+/**
+ * Shows cookie.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowCookie = function (event) {
+	this._toggleBlock(event, '.js-component-cookie');
 };
 
 /**
