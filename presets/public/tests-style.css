@@ -41,12 +41,12 @@ Styleguide 1.1
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 250px;
+	width: 200px;
 	color: #ffffff;
 	background: #2b333e;
 }
 .catBody-rightSide {
-	margin-left: 250px;
+	margin-left: 200px;
 	background: rgba(241, 244, 248, 0.5);
 }
 .catBody--testView {
