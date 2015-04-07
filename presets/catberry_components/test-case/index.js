@@ -25,6 +25,7 @@ function TestCase() {
  * for template engine.
  */
 TestCase.prototype.render = function () {
+	var self = this;
 	return this.$context.getStoreData()
 		.then(function (data) {
 			var componentName = data.componentName,
@@ -39,10 +40,6 @@ TestCase.prototype.render = function () {
 
 			return {
 				cases: Object.keys(cases)
-					.filter(function (testCaseName) {
-						return data.viewMode != 'gallery' ||
-							cases[testCaseName].showInGallery;
-					})
 					.map(function (testCaseName) {
 						var testCase = {};
 						testCase.testCaseName = testCaseName;
@@ -51,9 +48,7 @@ TestCase.prototype.render = function () {
 					}),
 				testCaseName: data.testCaseName,
 				currentCase: currentCase,
-				componentName: componentName,
-				isGalleryViewMode: data.viewMode === 'gallery',
-				viewMode: data.viewMode
+				componentName: componentName
 			};
 		});
 };
@@ -64,9 +59,83 @@ TestCase.prototype.render = function () {
  * @returns {Promise<Object>|Object|null|undefined} Binding settings.
  */
 TestCase.prototype.bind = function () {
-	var window = this.$context.locator.resolve('window'),
+	var browserWindow = this.$context.locator.resolve('window'),
 		highlights = this.$context.element.querySelectorAll('.js-highlight');
 	for (var i = 0; i < highlights.length; i++) {
-		window.hljs.highlightBlock(highlights[i]);
+		browserWindow.hljs.highlightBlock(highlights[i]);
 	}
+
+	return {
+		click: {
+			'.js-show-component-markup': this._handleShowMarkup,
+			'.js-show-component-cookie': this._handleShowCookie,
+			'.js-show-component-html': this._handleShowHtml,
+			'.js-show-component-case': this._handleShowCase
+		}
+	};
+};
+
+/**
+ * Shows component markup.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowMarkup = function (event) {
+	this._toggleBlock(event, '.js-component-markup');
+};
+
+/**
+ * Shows component case options.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowCase = function (event) {
+	this._toggleBlock(event, '.js-component-case');
+};
+
+/**
+ * Shows cookie.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowCookie = function (event) {
+	var blockSelector = '.js-component-cookie',
+		block = this.$context.element.querySelector(blockSelector + ' code'),
+		browserWindow = this.$context.locator.resolve('window');
+
+	block.innerText = JSON.stringify(this.$context.cookie.getAll(), null, '\t');
+
+	browserWindow.hljs.highlightBlock(block);
+
+	this._toggleBlock(event, blockSelector);
+};
+
+/**
+ * Shows html.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowHtml = function (event) {
+	var blockSelector = '.js-component-html',
+		block = this.$context.element.querySelector(blockSelector + ' code'),
+		browserWindow = this.$context.locator.resolve('window');
+
+	block.innerText = this.$context.element
+		.querySelector('.js-component-test').innerHTML.trim();
+
+	browserWindow.hljs.highlightBlock(block);
+
+	this._toggleBlock(event, blockSelector);
+};
+
+/**
+ * Toggles block.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._toggleBlock = function (event, blockSelector) {
+	event.preventDefault();
+	this.$context.element.querySelector(blockSelector)
+		.style.display = 'block';
+	event.currentTarget.style.display = 'none';
 };

@@ -5,7 +5,7 @@
 	<div class="catParagraph catTabs">
 		<span class="catTabs-item">Cases: </span>
         {{#each ../cases}}
-			<a class="catTabs-item {{#if this.isActive}}is-active{{/if}}" href="/{{../../viewMode}}/{{../../componentName}}/{{this.testCaseName}}">{{this.testCaseName}}</a>
+			<a class="catTabs-item {{#if this.isActive}}is-active{{/if}}" href="/cases/{{../../componentName}}/{{this.testCaseName}}">{{this.testCaseName}}</a>
         {{/each}}
 	</div>
 	<div class="catDivider"></div>
@@ -14,7 +14,7 @@
 	<div class="catParagraph">
 		<div class="catHeading catHeading--3 catParagraph">{{../currentCase.description}}</div>
 		<div class="catParagraph">
-			<div class="catTest" style="{{../currentCase.styles}}">
+			<div class="catTest js-component-test" style="{{../currentCase.styles}}">
                 {{#if ../currentCase.data}}
 					<cat-test-case-{{../componentName}}
 						id="js-test-case-{{../componentName}}-{{../testCaseName}}"
@@ -37,13 +37,24 @@
                 {{/if}}
 			</div>
 		</div>
-        {{#unless ../isGalleryViewMode}}
-			<div class="catParagraph">
-				<pre class="catBlockCode"><code class="catCode js-highlight html">&lt;cat-{{../../componentName}} id="js-cat-{{../../componentName}}"{{#each ../../currentCase.attributes}} {{@key}}="{{this}}"{{/each}}{{#if ../../currentCase.store}} cat-store="{{../../currentCase.store}}"{{/if}}&gt;&lt;/cat-{{../../componentName}}&gt;</code><span class="catBlockCode-title">markup</span></pre>
-			</div>
-			<div class="catParagraph">
-				<pre class="catBlockCode"><code class="catCode js-highlight json">{{../../currentCase.string}}</code><span class="catBlockCode-title">test case</span></pre>
-			</div>
-        {{/unless}}
+		<div class="catDivider"></div>
+		<div class="catParagraph">
+			<a href="#" class="catButton js-show-component-markup">Show markup</a>
+			<a href="#" class="catButton js-show-component-case">Show options of case</a>
+			<a href="#" class="catButton js-show-component-html">Show generated html</a>
+			<a href="#" class="catButton js-show-component-cookie">Show current cookie</a>
+		</div>
+		<div class="catParagraph js-component-markup" style="display: none;">
+			<pre class="catBlockCode"><code class="catCode js-highlight html">&lt;cat-{{../componentName}} id="js-cat-{{../componentName}}"{{#each ../currentCase.attributes}} {{@key}}="{{this}}"{{/each}}{{#if ../currentCase.store}} cat-store="{{../currentCase.store}}"{{/if}}&gt;&lt;/cat-{{../componentName}}&gt;</code><span class="catBlockCode-title">markup</span></pre>
+		</div>
+		<div class="catParagraph js-component-case" style="display: none">
+			<pre class="catBlockCode"><code class="catCode js-highlight json">{{../currentCase.string}}</code><span class="catBlockCode-title">case</span></pre>
+		</div>
+		<div class="catParagraph js-component-html" style="display: none">
+			<pre class="catBlockCode"><code class="catCode js-highlight html"></code><span class="catBlockCode-title">html</span></pre>
+		</div>
+		<div class="catParagraph js-component-cookie" style="display: none">
+			<pre class="catBlockCode"><code class="catCode js-highlight json"></code><span class="catBlockCode-title">cookie</span></pre>
+		</div>
 	</div>
 {{/if}}
