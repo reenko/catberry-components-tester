@@ -310,7 +310,7 @@ Styleguide 3.2
 	padding: 16px;
 	margin: 10px 0;
 	max-height: 200px;
-	background: #ebeff4;
+	background: #fff;
 	box-shadow:
 		0 1px 2px 1px rgba(0, 0, 0, 0.1),
 		0 -1px 2px 1px rgba(0, 0, 0, 0.1);
@@ -409,8 +409,8 @@ Styleguide 4.3
 	display: inline-block;
 	padding: 10px 15px;
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #ffffff;
-	background: #2b333e;
+	color: #333c49;
+	background: #f1f4f8;
 	border-radius: 4px;
 	margin-right: 10px;
 	text-decoration: none;
