@@ -48,8 +48,7 @@ TestCase.prototype.render = function () {
 					}),
 				testCaseName: data.testCaseName,
 				currentCase: currentCase,
-				componentName: componentName,
-				cookie: JSON.stringify(self.$context.cookie.getAll(), null, '\t')
+				componentName: componentName
 			};
 		});
 };
@@ -100,7 +99,12 @@ TestCase.prototype._handleShowCase = function (event) {
  * @private
  */
 TestCase.prototype._handleShowCookie = function (event) {
-	this._toggleBlock(event, '.js-component-cookie');
+	var blockSelector = '.js-component-cookie',
+		block = this.$context.element.querySelector(blockSelector + ' code');
+
+	block.innerText = JSON.stringify(this.$context.cookie.getAll(), null, '\t');
+
+	this._toggleBlock(event, blockSelector);
 };
 
 /**

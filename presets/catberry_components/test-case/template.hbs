@@ -13,9 +13,9 @@
 {{#if currentCase}}
 	<div class="catParagraph">
 		<div class="catHeading catHeading--3 catParagraph">{{../currentCase.description}}</div>
-		<div class="catParagraph js-component-test">
-			<div class="catTest" style="{{../currentCase.styles}}">
-                {{~#if ../currentCase.data}}
+		<div class="catParagraph">
+			<div class="catTest js-component-test" style="{{../currentCase.styles}}">
+                {{#if ../currentCase.data}}
 					<cat-test-case-{{../componentName}}
 						id="js-test-case-{{../componentName}}-{{../testCaseName}}"
                     {{#each ../currentCase.attributes}}
@@ -34,7 +34,7 @@
                     {{#if ../currentCase.store}}cat-store="{{../currentCase.store}}"{{/if}}>
 
 					</cat-{{../componentName}}>
-                {{/if~}}
+                {{/if}}
 			</div>
 		</div>
 		<div class="catDivider"></div>
@@ -54,7 +54,7 @@
 			<pre class="catBlockCode"><code class="catCode js-highlight html"></code><span class="catBlockCode-title">html</span></pre>
 		</div>
 		<div class="catParagraph js-component-cookie" style="display: none">
-			<pre class="catBlockCode"><code class="catCode js-highlight json">{{../cookie}}</code><span class="catBlockCode-title">cookie</span></pre>
+			<pre class="catBlockCode"><code class="catCode js-highlight json"></code><span class="catBlockCode-title">cookie</span></pre>
 		</div>
 	</div>
 {{/if}}
