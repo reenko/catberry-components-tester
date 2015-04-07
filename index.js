@@ -34,14 +34,16 @@ module.exports = {
 				'!lib*/**',
 				'!l10n*/**',
 				'!processes.json',
-				'!routes.js'
+				'!routes.js',
+				'!gemini*/**'
 			],
 			[
 				'node_modules',
 				'lib',
 				'scripts',
 				'configs',
-				'l10n'
+				'l10n',
+				'gemini'
 			],
 			destination
 		);
