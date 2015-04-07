@@ -383,3 +383,18 @@ a.catTabs-item.is-active,
 a.catTabs-item:hover {
 	border-bottom-color: #2b333e;
 }
+
+.caButton {
+	display: inline-block;
+	padding: 10px 15px;
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #ffffff;
+	background: #2b333e;
+	border-radius: 4px;
+	margin: 0 25px;
+	text-decoration: none;
+	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.catButton:hover {
+	box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.3);
+}
