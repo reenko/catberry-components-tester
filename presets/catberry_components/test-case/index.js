@@ -70,6 +70,7 @@ TestCase.prototype.bind = function () {
 		click: {
 			'.js-show-component-markup': this._handleShowMarkup,
 			'.js-show-component-cookie': this._handleShowCookie,
+			'.js-show-component-html': this._handleShowHtml,
 			'.js-show-component-case': this._handleShowCase
 		}
 	};
@@ -100,6 +101,18 @@ TestCase.prototype._handleShowCase = function (event) {
  */
 TestCase.prototype._handleShowCookie = function (event) {
 	this._toggleBlock(event, '.js-component-cookie');
+};
+
+/**
+ * Shows html.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowHtml = function (event) {
+	var blockSelector = '.js-component-html';
+	this.$context.element.querySelector(blockSelector + ' pre')
+		.innerText = this.$context.element.innerHTML;
+	this._toggleBlock(event, blockSelector);
 };
 
 /**
