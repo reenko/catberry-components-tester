@@ -69,7 +69,7 @@ TestCase.prototype.bind = function () {
 			'.js-show-component-markup': this._handleShowMarkup,
 			'.js-show-component-case': this._handleShowCase
 		}
-	}
+	};
 };
 
 /**
