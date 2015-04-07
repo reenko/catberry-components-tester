@@ -29,8 +29,7 @@ TestPages.prototype.render = function () {
 	return this.$context.getStoreData()
 		.then(function (data) {
 			return {
-				showComponents:
-					data.activePages.gallery || data.activePages.cases,
+				showComponents: data.activePages.cases,
 				brand: {
 					name: packageConfig.name,
 					description: packageConfig.description

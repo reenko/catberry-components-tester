@@ -34,16 +34,6 @@ TestList.prototype.render = function () {
 						var cases = tests[componentName].cases || {},
 							casesNames = Object.keys(cases);
 
-						if (data.viewMode === 'gallery') {
-							return casesNames.some(function (testCaseName) {
-								if (cases[testCaseName].showInGallery) {
-									firstVisibleCaseByComponent[componentName] =
-										testCaseName;
-								}
-								return cases[testCaseName].showInGallery;
-							});
-						}
-
 						if (casesNames.length > 0) {
 							firstVisibleCaseByComponent[componentName] =
 								casesNames[0];
@@ -58,8 +48,7 @@ TestList.prototype.render = function () {
 							firstTestCaseName:
 								firstVisibleCaseByComponent[componentName]
 						};
-					}),
-				viewMode: data.viewMode
+					})
 			};
 		});
 };

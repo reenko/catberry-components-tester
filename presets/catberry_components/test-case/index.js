@@ -39,10 +39,6 @@ TestCase.prototype.render = function () {
 
 			return {
 				cases: Object.keys(cases)
-					.filter(function (testCaseName) {
-						return data.viewMode != 'gallery' ||
-							cases[testCaseName].showInGallery;
-					})
 					.map(function (testCaseName) {
 						var testCase = {};
 						testCase.testCaseName = testCaseName;
@@ -51,9 +47,7 @@ TestCase.prototype.render = function () {
 					}),
 				testCaseName: data.testCaseName,
 				currentCase: currentCase,
-				componentName: componentName,
-				isGalleryViewMode: data.viewMode === 'gallery',
-				viewMode: data.viewMode
+				componentName: componentName
 			};
 		});
 };

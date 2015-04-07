@@ -3,7 +3,7 @@
 module.exports = TestPages;
 
 var PAGES = [
-	'main', 'gallery', 'cases'
+	'main', 'cases'
 ];
 
 /*
