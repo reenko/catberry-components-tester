@@ -63,4 +63,41 @@ TestCase.prototype.bind = function () {
 	for (var i = 0; i < highlights.length; i++) {
 		window.hljs.highlightBlock(highlights[i]);
 	}
+
+	return {
+		click: {
+			'.js-show-component-markup': this._handleShowMarkup,
+			'.js-show-component-case': this._handleShowCase
+		}
+	}
+};
+
+/**
+ * Shows component markup.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowMarkup = function (event) {
+	this._toggleBlock(event, '.js-component-markup');
+};
+
+/**
+ * Shows component case options.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._handleShowCase = function (event) {
+	this._toggleBlock(event, '.js-component-case');
+};
+
+/**
+ * Toggles block.
+ * @param {Event} event
+ * @private
+ */
+TestCase.prototype._toggleBlock = function (event, blockSelector) {
+	event.preventDefault();
+	this.$context.element.querySelector(blockSelector)
+		.style.display = 'block';
+	event.currentTarget.style.display = 'none';
 };
