@@ -1,6 +1,6 @@
 {
 	"name": "catberry-components-tester",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Engine for testing Catberry components",
 	"main": "./index.js",
 	"repository": {
