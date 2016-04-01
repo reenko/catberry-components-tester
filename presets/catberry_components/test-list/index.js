@@ -1,54 +1,35 @@
 'use strict';
 
-module.exports = TestList;
+const tests = require('../../cat-component-tests.json');
 
-var tests = require('../../cat-component-tests.json');
+class TestList {
+	render() {
+		return this.$context.getStoreData()
+			.then(data => {
+				const firstVisibleCaseByComponent = {};
+				return {
+					components: Object.keys(tests).sort()
+						.filter(componentName => {
+							const cases = tests[componentName].cases || {};
+							const casesNames = Object.keys(cases);
 
-/*
- * This is a Catberry Cat-component file.
- * More details can be found here
- * https://github.com/catberry/catberry/blob/master/docs/index.md#cat-components
- */
+							if (casesNames.length > 0) {
+								firstVisibleCaseByComponent[componentName] = casesNames[0];
+							}
 
-/**
- * Creates new instance of "document" component.
- * @constructor
- */
-function TestList() {
-
+							return true;
+						})
+						.map(componentName => {
+							return {
+								componentName,
+								isActive: componentName === data.componentName,
+								firstTestCaseName:
+									firstVisibleCaseByComponent[componentName]
+							};
+						})
+				};
+			});
+	}
 }
 
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TestList.prototype.render = function () {
-	return this.$context.getStoreData()
-		.then(function (data) {
-			var firstVisibleCaseByComponent = {};
-			return {
-				components: Object.keys(tests).sort()
-					.filter(function (componentName) {
-						var cases = tests[componentName].cases || {},
-							casesNames = Object.keys(cases);
-
-						if (casesNames.length > 0) {
-							firstVisibleCaseByComponent[componentName] =
-								casesNames[0];
-						}
-
-						return true;
-					})
-					.map(function (componentName) {
-						return {
-							componentName: componentName,
-							isActive: componentName === data.componentName,
-							firstTestCaseName:
-								firstVisibleCaseByComponent[componentName]
-						};
-					})
-			};
-		});
-};
+module.exports = TestList;

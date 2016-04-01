@@ -1,40 +1,19 @@
 'use strict';
 
-module.exports = TestCaseComponent;
+const tests = require('../../../cat-component-tests.json');
+const BaseComponent = require('__path__');
 
-var tests = require('../../../cat-component-tests.json'),
-	BaseComponent = require('__path__'),
-	util = require('util');
+class TestCaseComponent extends BaseComponent {
+	render() {
+		const testCaseName = this.$context.attributes['test-case-name'];
+		const componentName = this.$context.attributes['test-case-component'];
 
-util.inherits(TestCaseComponent, BaseComponent);
-
-/*
- * This is a Catberry Cat-component file.
- * More details can be found here
- * https://github.com/catberry/catberry/blob/master/docs/index.md#cat-components
- */
-
-/**
- * Creates new instance of "document" component.
- * @constructor
- */
-function TestCaseComponent () {
-	BaseComponent.apply(this, arguments);
+		try {
+			return tests[componentName].cases[testCaseName].data;
+		} catch (error) {
+			return {};
+		}
+	}
 }
 
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TestCaseComponent.prototype.render = function () {
-	var testCaseName = this.$context.attributes['test-case-name'],
-		componentName = this.$context.attributes['test-case-component'];
-
-	try {
-		return tests[componentName].cases[testCaseName].data;
-	} catch (error) {
-		return {};
-	}
-};
+module.exports = TestCaseComponent;

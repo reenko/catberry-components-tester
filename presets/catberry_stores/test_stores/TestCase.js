@@ -1,35 +1,22 @@
 'use strict';
 
-module.exports = TestCase;
+class TestCase {
+	constructor() {
+		this.$context.setDependency('test_stores/TestPages');
+	}
 
-/*
- * This is a Catberry Store file.
- * More details can be found here
- * https://github.com/catberry/catberry/blob/master/docs/index.md#stores
- */
-
-/**
- * Creates new instance of the test store.
- * @param {ServiceLocator} $serviceLocator Locator of the application.
- * @constructor
- */
-function TestCase($serviceLocator) {
-	this.$context.setDependency('test_stores/TestPages');
+	load() {
+		const componentName = this.$context.state.componentName;
+		const testCaseName = this.$context.state.testCaseName;
+		return this.$context.getStoreData('test_stores/TestPages')
+			.then(data => {
+				return {
+					componentName,
+					testCaseName,
+					viewMode: data.activePages.main ? 'cases' : data.page
+				};
+			});
+	}
 }
 
-/**
- * Loads data from remote source.
- * @returns {Promise<Object>|Object|null|undefined} Loaded data.
- */
-TestCase.prototype.load = function () {
-	var componentName = this.$context.state.componentName,
-		testCaseName = this.$context.state.testCaseName;
-	return this.$context.getStoreData('test_stores/TestPages')
-		.then(function (data) {
-			return {
-				componentName: componentName,
-				testCaseName: testCaseName,
-				viewMode: data.activePages.main ? 'cases' : data.page
-			};
-		});
-};
+module.exports = TestCase;
